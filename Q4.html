@@ -1,0 +1,121 @@
+<!--4. Build a responsive Navbar, on smaller screens it should be a hamburger menu which on click should reveal the menu items nicely, and on larger screens they should be displayed directly on the screen.-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Responsive Navbar</title>
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #333;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  list-style-type: none;
+}
+
+.menu li {
+  margin: 0 10px;
+}
+
+.menu li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.line {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hamburger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active .line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+
+  .hamburger.active ~ .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    margin-top: 10px;
+    padding: 10px;
+  }
+
+  .hamburger.active ~ .menu li {
+    margin: 10px 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="#">Logo</a>
+    </div>
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.querySelector('.hamburger');
+  const menu = document.querySelector('.menu');
+
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    menu.classList.toggle('active');
+  });
+});
+
+  </script>
+</body>
+</html>
